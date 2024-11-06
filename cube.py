@@ -35,6 +35,15 @@ def successor(arr,int1,int2) ->int :
     arr[int2] = temp
     return arr
 
+
+def randomSuccessor (arr) -> int:
+    a = r.randint(0,124)
+    b = r.randint(0,124)
+    if a==b :
+        b=(b+2)//2
+    successor(arr,a,b)
+    return arr
+
 def neighbor(arr) :
     #value that store the most relevant neighbor
     neighbor = any
@@ -60,4 +69,3 @@ def neighbor(arr) :
                 
             successorTemp = successor(successorTemp,i,j)
     return neighbor
-
