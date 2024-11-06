@@ -14,6 +14,9 @@ for i in range(0,125) :
 def getCube() :
     return arr
 
+def CoorToIdx (x: int, y: int, z: int)->int :
+    return (y-1)*5*5 + (z-1)*5 + (x-1)
+
 def getRandomCube() :
     r.shuffle(arr)
     return arr
