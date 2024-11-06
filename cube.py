@@ -1,10 +1,5 @@
 import random as r
-# import function as f
-# import time as t
-# import numpy as np
-# import steepest as st
 import obj as o
-# import sideways as sid
 
 # cube
 arr:int = [0]*125

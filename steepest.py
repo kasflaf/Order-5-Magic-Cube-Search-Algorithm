@@ -1,4 +1,3 @@
-
 import obj as o
 import cube as c
 
