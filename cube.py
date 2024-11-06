@@ -37,14 +37,11 @@ def successor(arr,int1,int2) ->int :
 
 def neighbor(arr) :
     #value that store the most relevant neighbor
-    neighbor = [i for i in arr]
+    neighbor = any
+    objNeighbor = -9999
 
     #value that will iterated
     successorTemp= [i for i in arr]
-
-    # neighbor must be successor of current, for first value 
-    # that have same objective value as current
-    firstChange = True
 
     # loop (7750 times)
     for i in range(0,124) :
@@ -52,19 +49,14 @@ def neighbor(arr) :
 
             #test successor
             successorTemp = successor(successorTemp,i,j)
+
             #determine objective value of tempSucessor and neighbor candidate
             objSuccessorTemp = o.objective(successorTemp)
-            objNeighbor = o.objective(neighbor)
 
             # found better successor
-            if objSuccessorTemp> objNeighbor:
-                firstChange==False
-                neighbor = successor(neighbor,i,j)
-                
-            # first successor that have similar value
-            # elif objSuccessorTemp==objNeighbor and firstChange==True  :
-            #     firstChange = False
-            #     neighbor = successor(neighbor,i,j)
+            if objSuccessorTemp>= objNeighbor:
+                neighbor = [i for i in successorTemp]
+                objNeighbor = objSuccessorTemp
                 
             successorTemp = successor(successorTemp,i,j)
     return neighbor

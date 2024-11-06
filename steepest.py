@@ -17,15 +17,15 @@ def steepest(arr) :
             print(o.objective(current))
             return current
         current = neighbor
+        
 
 def main() :
     arr = c.getRandomCube()
 
     c.printArray(arr)
 
-    steepest(arr)
+    arr = steepest(arr)
 
     c.printArray(arr)
     return 0
-
 main()
