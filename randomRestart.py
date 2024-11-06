@@ -15,20 +15,19 @@ def steepest(arr) :
         if neighborObjective<=o.objective(current) :
             print("state akhir:" ,end="")
             print(o.objective(current))
-            break
+            return current
         current = neighbor
-    arr[:] = current
-    return current
 
 def main() :
     arr = c.getRandomCube()
-        
+    
+
     while (o.objective(arr) < 0):
         arr = c.getRandomCube()
 
         c.printArray(arr)
 
-        steepest(arr)
+        arr = steepest(arr)
 
         c.printArray(arr)
 
