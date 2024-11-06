@@ -1,4 +1,4 @@
-import obj as o
+import objex as o
 import cube as c
 
 def steepest(arr) :
@@ -17,15 +17,15 @@ def steepest(arr) :
             print(o.objective(current))
             return current
         current = neighbor
+        
 
 def main() :
     arr = c.getRandomCube()
 
     c.printArray(arr)
 
-    steepest(arr)
+    arr = steepest(arr)
 
     c.printArray(arr)
     return 0
-
 main()
