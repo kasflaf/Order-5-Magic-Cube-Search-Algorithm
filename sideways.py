@@ -1,5 +1,5 @@
 import obj as o
-import function as f
+import cube as c
 
 
 def sideways(arr) :
@@ -9,7 +9,7 @@ def sideways(arr) :
     j=1
     countsidestep = 0
     while True:
-        neighbor = f.neighbor(current)
+        neighbor = c.neighbor(current)
         neighborObjective = o.objective(neighbor)
         print("iterasi " + str(j) +": ",end="")
         print(neighborObjective)
