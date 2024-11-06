@@ -2,6 +2,7 @@ import obj as o
 import cube as c
 import math as m
 import random as r
+import time as t
 
 def simulatedAnnealing(arr) :
 
@@ -46,6 +47,9 @@ def schedule(a) :
 
 
 def main() :
+
+    
+    start=t.time()
     arr = c.getRandomCube()
 
     c.printArray(arr)
@@ -54,8 +58,12 @@ def main() :
 
     c.printArray(arr)
 
+    end = t.time()
     print("stuck: ",end="")
     print(stuck)
+    elapsed = end - start
+    
+    print("duration: " + str(elapsed))
 
     return 0
 main()

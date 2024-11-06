@@ -1,5 +1,6 @@
 import obj as o
 import cube as c
+import time as t
 
 def steepest(arr) :
     current = [i for i in arr]
@@ -24,8 +25,13 @@ def main() :
 
     c.printArray(arr)
 
+    start = t.time()
     arr = steepest(arr)
+    end = t.time()
 
     c.printArray(arr)
+    elapsed = end-start
+    print("duration: " + str(elapsed))    
+
     return 0
 main()
