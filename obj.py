@@ -110,6 +110,8 @@ def objective(arr) :
     return (-count)
 
 def diagnostic(arr):
+
+    print("\n")
     # nilai minimum objektif = -(1 + 1x13 + 25 + 25 + 25 + 15 + 4) = -108
     # nilai maksimum objektif = 0
     # lag : ke 5 angka memenuhi angka magic
@@ -231,4 +233,6 @@ def diagnostic(arr):
         dr = False
     if(dr): print("diagonal ruang is solved")
         
+    print("\n")
+
     return
