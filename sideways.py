@@ -9,7 +9,7 @@ def sideways(arr) :
     j=1
     countsidestep = 0
     while True:
-        neighbor = c.neighbor(current)
+        neighbor = c.sidewaysneighbor(current)
         neighborObjective = o.objective(neighbor)
         print("iterasi " + str(j) +": ",end="")
         print(neighborObjective)
