@@ -1,4 +1,3 @@
-import function as f
 import obj as o
 import cube as c
 
@@ -8,7 +7,7 @@ def steepest(arr) :
     print(o.objective(current))
     j=1
     while True:
-        neighbor = f.neighbor(current)
+        neighbor = c.neighbor(current)
         neighborObjective = o.objective(neighbor)
         print("iterasi " + str(j) +": ",end="")
         print(neighborObjective)
