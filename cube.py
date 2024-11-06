@@ -61,3 +61,26 @@ def neighbor(arr) :
             successorTemp = successor(successorTemp,i,j)
     return neighbor
 
+def sidewaysneighbor(arr):
+    neighbor = any
+    objNeighbor = -9999
+
+    samearray = []
+
+    for i in range(0, 124):
+        for j in range(i + 1, 125):
+            successorTemp = arr[:]
+            successorTemp[i], successorTemp[j] = successorTemp[j], successorTemp[i]
+            objSuccessorTemp = o.objective(successorTemp)
+
+            if objSuccessorTemp > objNeighbor:
+                neighbor = successorTemp[:]
+                objNeighbor = objSuccessorTemp
+                samearray.clear()
+            elif objSuccessorTemp == objNeighbor:
+                samearray.append(successorTemp[:])
+
+    if objNeighbor == o.objective(arr) and samearray:
+        neighbor = r.choice(samearray)
+
+    return neighbor
