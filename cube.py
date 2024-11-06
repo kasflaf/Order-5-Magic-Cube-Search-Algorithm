@@ -6,13 +6,13 @@ arr:int = [0]*125
 for i in range(0,125) :
     arr[i]=i+1
 
-def getCube() :
+def getCube() -> int:
     return arr
 
 def CoorToIdx (x: int, y: int, z: int)->int :
     return (y-1)*5*5 + (z-1)*5 + (x-1)
 
-def getRandomCube() :
+def getRandomCube() -> int:
     r.shuffle(arr)
     return arr
 
@@ -28,7 +28,7 @@ def printArray(arr) :
                 print(" ",end="")
         print()
 
-def successor(arr,int1,int2) :
+def successor(arr,int1,int2) ->int :
     
     temp = arr[int1]
     arr[int1] = arr[int2]
