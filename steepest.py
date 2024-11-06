@@ -1,4 +1,4 @@
-import objex as o
+import obj as o
 import cube as c
 
 def steepest(arr) :
