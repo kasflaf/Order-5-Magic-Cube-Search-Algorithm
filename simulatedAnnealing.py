@@ -1,4 +1,4 @@
-import objex as o
+import obj as o
 import cube as c
 import math as m
 import random as r
