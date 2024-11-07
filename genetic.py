@@ -31,7 +31,6 @@ def generatePopulation(population: int):
 def genetic(population, arr, iterationCount ):
     iterationCount[:] = [iterationCount[0] + 1]
 
-    population:int = 10
     populationInit = arr
     stateVal = [0]*population
     fitnessVal = [0]*population
@@ -64,7 +63,7 @@ def genetic(population, arr, iterationCount ):
             for j in range (0,2):
                 random_number = random.randint(1, 100)
                 temp = 0
-                for k in range (0,10):
+                for k in range (0,population):
                     temp += fitnessVal[k] 
                     if random_number <= temp:
                         parrIdx[j] = k
@@ -107,7 +106,7 @@ def genetic(population, arr, iterationCount ):
         # c.printArray(temp)
 
         #mutasi
-        chance = 0.5  # 10% chance
+        chance = 0.3  # 50% chance
         # Check if the event occurs
         if random.random() < chance:
             idx1 = random.randint(0,124)
@@ -139,13 +138,33 @@ def genetic(population, arr, iterationCount ):
     print(f"Max: {max(stateVal)}")
     print(f"Avg: {sum(stateVal)/len(stateVal)}\n")
 
-    return populationNew
+    newStateVal = [0]*population
+    for i in range (0, population):
+        newStateVal[i] = o.objective(populationNew[i])
+
+    
+    # if (sum(stateVal)/len(stateVal)) > (sum(newStateVal)/len(stateVal)):
+    #     return populationInit
+    # else:
+    #     chancepop = 0.2 #20%
+    #     if random.random() < chance:
+    #         return populationInit
+    #     else:
+    #         return populationNew
+
+    # if (sum(stateVal)/len(stateVal)) > (sum(newStateVal)/len(newStateVal)):
+    if (max(stateVal)) > (max(newStateVal)):
+        return populationInit
+    else:
+        return populationNew
+
+    # return populationNew
 
 
 
 def main():
     population: int = 10
-    iteration: int = 10000
+    iteration: int = 200000
     itercount = [0]
     start_time = t.time()
 
