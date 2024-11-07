@@ -101,7 +101,27 @@ def genetic(population, arr):
         #check
         # print("test child: ")
         # c.printArray(temp)
-        
+
+        #mutasi
+        chance = 0.5  # 10% chance
+        # Check if the event occurs
+        if random.random() < chance:
+            idx1 = random.randint(0,124)
+            idx2 = random.randint(0,124)
+
+            # #check
+            # print(temp[idx1])
+            # print(temp[idx2])
+
+            tempVal = temp[idx1]
+            temp[idx1] = temp[idx2]
+            temp[idx2] = tempVal
+
+            # #check
+            # print(temp[idx1])
+            # print(temp[idx2])
+
+
         populationNew[l] = temp
         
         # #check
