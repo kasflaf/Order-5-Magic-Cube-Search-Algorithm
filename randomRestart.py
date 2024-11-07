@@ -27,6 +27,8 @@ def main() :
     maxarr = arr
 
     while (o.objective(arr) < 0 and numRestart <= maxRestart):
+        print("Restart ke-" + str(numRestart+1))
+
         arr = c.getRandomCube()
         c.printArray(arr)
         arr = steepest(arr)

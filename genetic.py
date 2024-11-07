@@ -1,6 +1,7 @@
 import obj as o
 import cube as c
 import random
+import time as t
 
 #check duplicate, true if duplicate
 def isDuplicate(arr, num: int) -> bool:
@@ -13,9 +14,10 @@ def isDuplicate(arr, num: int) -> bool:
 
 def visualizePopulation(population):
     for i in range(len(population)):
+        print("cube: \n")
         c.printArray(population[i])
-        print (o.objective(population[i]))
-        o.diagnostic(population[i])
+        print()
+        print (f"objective function: {o.objective(population[i])}\n\n")
 
 def generatePopulation(population: int):
     populationInit = [0]*population
@@ -26,7 +28,9 @@ def generatePopulation(population: int):
     return populationInit
 
 
-def genetic(population, arr):
+def genetic(population, arr, iterationCount ):
+    iterationCount[:] = [iterationCount[0] + 1]
+
     population:int = 10
     populationInit = arr
     stateVal = [0]*population
@@ -128,17 +132,41 @@ def genetic(population, arr):
         # print("test new populaiton: ")
         # c.printArray(populationNew[l])
 
+    #iteration tracker
+    print(f"iterasi ke-{iterationCount[0]}")
+    print("Objective Function: ")
+    print(stateVal)
+    print(f"Max: {max(stateVal)}")
+    print(f"Avg: {sum(stateVal)/len(stateVal)}\n")
+
     return populationNew
 
 
 
 def main():
     population: int = 10
-    iteration: int = 5
+    iteration: int = 10000
+    itercount = [0]
+    start_time = t.time()
 
+    #state awal
+    print("state awal: ")
     result = generatePopulation(population)
-    result = genetic(population, result)
-    # visualizePopulation(result)
+    visualizePopulation(result)
+
+    result = genetic(population, result, itercount)
+
+    #iterasi
+    for i in range(0, iteration-1):
+        result = genetic(population, result, itercount)
+
+    #state akhir
+    end_time = t.time()
+    print("\n\nstate akhir: ")
+    visualizePopulation(result)
+    print(f"Duration: {end_time - start_time}")
+
+
     return
 
 
