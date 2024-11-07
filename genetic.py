@@ -46,6 +46,14 @@ def genetic(population, arr, iterationCount ):
     # c.printArray(populationInit[2])
     # c.printArray(populationInit[9])
 
+    #invert stateVal
+    for i in range (0, population):
+        stateVal[i] = 2522 + stateVal[i]
+
+    #check
+    print("state val: ")
+    print(stateVal)
+
     #assign fitnessVal
     for i in range (0, population):
         fitnessVal[i] = (stateVal[i]/sum(stateVal))*100
@@ -141,7 +149,9 @@ def genetic(population, arr, iterationCount ):
     newStateVal = [0]*population
     for i in range (0, population):
         newStateVal[i] = o.objective(populationNew[i])
-
+    #invert stateVal
+    for i in range (0, population):
+        newStateVal[i] = 2522 + newStateVal[i]
     
     # if (sum(stateVal)/len(stateVal)) > (sum(newStateVal)/len(stateVal)):
     #     return populationInit
@@ -164,7 +174,7 @@ def genetic(population, arr, iterationCount ):
 
 def main():
     population: int = 10
-    iteration: int = 200000
+    iteration: int = 300000
     itercount = [0]
     start_time = t.time()
 
