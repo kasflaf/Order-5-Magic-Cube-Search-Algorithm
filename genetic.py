@@ -17,32 +17,39 @@ def visualizePopulation(population):
         print (o.objective(population[i]))
         o.diagnostic(population[i])
 
-
-def genetic():
-    population:int = 10
+def generatePopulation(population: int):
     populationInit = [0]*population
+
+    for i in range (0, population):
+        populationInit[i] = c.getRandomCube()
+
+    return populationInit
+
+
+def genetic(population, arr):
+    population:int = 10
+    populationInit = arr
     stateVal = [0]*population
     fitnessVal = [0]*population
 
-    #generate population
+    #count state Val
     for i in range (0, population):
-        populationInit[i] = c.getRandomCube()
         stateVal[i] = o.objective(populationInit[i])
 
     # #check
     # print("test population count and stateval: ")
     # print(len(populationInit))
-    print(stateVal)
-    c.printArray(populationInit[2])
-    c.printArray(populationInit[9])
+    # print(stateVal)
+    # c.printArray(populationInit[2])
+    # c.printArray(populationInit[9])
 
     #assign fitnessVal
     for i in range (0, population):
         fitnessVal[i] = (stateVal[i]/sum(stateVal))*100
 
     #check
-    print("test fitness: ")
-    print(fitnessVal)
+    # print("test fitness: ")
+    # print(fitnessVal)
 
     #start loop
     populationNew = [0]*population
@@ -59,8 +66,8 @@ def genetic():
                         parrIdx[j] = k
                         break
         #check
-        print("test parrent idx: ")
-        print(parrIdx)
+        # print("test parrent idx: ")
+        # print(parrIdx)
 
         #cross-over
         if stateVal[parrIdx[0]] >= stateVal [parrIdx[1]]:
@@ -69,12 +76,13 @@ def genetic():
                 if not isDuplicate(temp, populationInit[parrIdx[1]][i]):
                     temp[i] = populationInit[parrIdx[1]][i]
             
+
             #fill duplicate
             for i in range (63, 125):
                 if temp[i] == -1:
                     for j in range (0, 63):
                         if not isDuplicate(temp, populationInit[parrIdx[1]][j]):
-                            temp[j] = populationInit[parrIdx[1]][j]
+                            temp[i] = populationInit[parrIdx[1]][j]
                             break
         else:
             temp = populationInit[parrIdx[1]][0:63] + [-1]*(125-63) #partisi 1
@@ -87,12 +95,12 @@ def genetic():
                 if temp[i] == -1:
                     for j in range (0, 63):
                         if not isDuplicate(temp, populationInit[parrIdx[0]][j]):
-                            temp[j] = populationInit[parrIdx[0]][j]
+                            temp[i] = populationInit[parrIdx[0]][j]
                             break
 
         #check
-        print("test child: ")
-        c.printArray(temp)
+        # print("test child: ")
+        # c.printArray(temp)
         
         populationNew[l] = temp
         
@@ -105,7 +113,11 @@ def genetic():
 
 
 def main():
-    result = genetic()
+    population: int = 10
+    iteration: int = 5
+
+    result = generatePopulation(population)
+    result = genetic(population, result)
     # visualizePopulation(result)
     return
 
