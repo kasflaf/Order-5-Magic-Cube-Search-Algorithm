@@ -11,7 +11,7 @@ def stochastic(arr)->int :
     print("state awal:" ,end="")
     print(o.objective(current))
 
-    for i in range(75000) :
+    for i in range(78000) :
         neighbor = c.randomSuccessor(neighbor)
 
         if  o.objective(neighbor) > o.objective(current): 

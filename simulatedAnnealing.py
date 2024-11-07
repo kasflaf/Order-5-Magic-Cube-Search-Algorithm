@@ -20,19 +20,21 @@ def simulatedAnnealing(arr) :
     while True:
         j+=1
         t = schedule(j)
-        if t <= 0.0000000001  or o.objective(current)==0: return current,stuck
+        if t <= 0.000000000001  or o.objective(current)==0: return current,stuck
         next = c.randomSuccessor(next)
         deltaE = o.objective(next) - o.objective(current)
+
+        a = r.random()
 
         if deltaE > 0 : 
             current = [i for i in next]
             stuck=0
-
-        elif  deltaE <= 0 and r.random() <= m.exp(deltaE/t) : 
+        elif  deltaE <= 0 and a <= m.exp(deltaE/t) : 
             current = [i for i in next]
             stuck=0
         
         stuck+=1
+        
 
         next = [i for i in current]
 

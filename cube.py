@@ -13,8 +13,9 @@ def CoorToIdx (x: int, y: int, z: int)->int :
     return (y-1)*5*5 + (z-1)*5 + (x-1)
 
 def getRandomCube() -> int:
-    r.shuffle(arr)
-    return arr
+    newCube = [i for i in arr]
+    r.shuffle(newCube)
+    return newCube
 
 def printArray(arr) : 
     for i in range(5) :
@@ -69,6 +70,7 @@ def neighbor(arr) :
                 
             successorTemp = successor(successorTemp,i,j)
     return neighbor
+
 def sidewaysneighbor(arr):
     neighbor = any
     objNeighbor = -9999
