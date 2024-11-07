@@ -1,5 +1,6 @@
 import obj as o
 import cube as c
+import time as t
 
 def stochastic(arr)->int :
         # copy content of arr
@@ -10,7 +11,7 @@ def stochastic(arr)->int :
     print("state awal:" ,end="")
     print(o.objective(current))
 
-    for i in range(100000) :
+    for i in range(75000) :
         neighbor = c.randomSuccessor(neighbor)
 
         if  o.objective(neighbor) > o.objective(current): 
@@ -29,9 +30,16 @@ def main() :
 
     c.printArray(arr)
 
+    start = t.time()
+
     arr = stochastic(arr)
 
+    end = t.time()
     c.printArray(arr)
+
+    elapsed = end-start
+
+    print("duration: " + str(elapsed))    
 
     return 0
 main()
