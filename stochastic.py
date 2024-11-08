@@ -1,6 +1,10 @@
 import obj as o
 import cube as c
 import time as t
+import matplotlib.pyplot as plt
+
+objectiveResult = []
+
 
 def stochastic(arr)->int :
         # copy content of arr
@@ -21,6 +25,7 @@ def stochastic(arr)->int :
 
         print("iterasi " + str(i+1) +": ",end="")
         print(o.objective(current))
+        objectiveResult.append(o.objective(current))
 
     return current
 
@@ -39,7 +44,14 @@ def main() :
 
     elapsed = end-start
 
-    print("duration: " + str(elapsed))    
+    print("duration: " + str(elapsed))  
+
+    plt.plot(range(1, len(objectiveResult) + 1), objectiveResult, color='purple')
+    plt.xlabel("Iteration")
+    plt.ylabel("Neighbor Objective")
+    plt.title("Stochastic")
+    plt.ylim(min(objectiveResult) - 100 , 0)
+    plt.show()   
 
     return 0
 main()

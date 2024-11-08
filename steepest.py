@@ -22,7 +22,7 @@ def steepest(arr) :
             return current
         current = neighbor
 
-        objectiveResult.append(neighborObjective)
+        objectiveResult.append(o.objective(neighbor))
         
 
 def main() :
@@ -38,11 +38,12 @@ def main() :
     elapsed = end-start
     print("duration: " + str(elapsed))   
 
-    plt.plot(range(1, len(objectiveResult) + 1), objectiveResult, marker='o')
+    plt.plot(range(1, len(objectiveResult) + 1), objectiveResult, color='purple')
     plt.xlabel("Iteration")
     plt.ylabel("Neighbor Objective")
     plt.title("Steepest Ascent")
-    plt.show() 
+    plt.ylim(min(objectiveResult) - 100 , 0)
+    plt.show()
 
     return 0
 main()
