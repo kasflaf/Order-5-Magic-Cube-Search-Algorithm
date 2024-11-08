@@ -1,6 +1,9 @@
 import obj as o
 import cube as c
 import time as t
+import matplotlib.pyplot as plt
+
+objectiveResult = []
 
 def sideways(arr) :
     current = [i for i in arr]
@@ -26,6 +29,7 @@ def sideways(arr) :
             countsidestep = 0
 
         current = neighbor
+        objectiveResult.append(o.objective(neighbor))
 
 def main() :
     arr = c.getRandomCube()
@@ -40,6 +44,12 @@ def main() :
     elapsed = end - start
     print("duration: " + str(elapsed))
 
-    return 0
+    plt.plot(range(1, len(objectiveResult) + 1), objectiveResult, color='purple')
+    plt.xlabel("Iteration")
+    plt.ylabel("Neighbor Objective")
+    plt.title("HC with Sideways Move")
+    plt.ylim(min(objectiveResult) - 100 , 0)
+    plt.show()
 
+    return 0
 main()

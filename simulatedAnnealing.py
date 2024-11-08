@@ -3,6 +3,9 @@ import cube as c
 import math as m
 import random as r
 import time as t
+import matplotlib.pyplot as plt
+
+objectiveResult = []
 
 def simulatedAnnealing(arr) :
 
@@ -40,6 +43,7 @@ def simulatedAnnealing(arr) :
 
         print("iterasi " + str(j) +": ",end="")
         print(o.objective(current))
+        objectiveResult.append(o.objective(current))
 
 def schedule(a) :
     t=100000.0
@@ -66,6 +70,12 @@ def main() :
     elapsed = end - start
     
     print("duration: " + str(elapsed))
-
+    
+    plt.plot(range(1, len(objectiveResult) + 1), objectiveResult, color='purple')
+    plt.xlabel("Iteration")
+    plt.ylabel("Neighbor Objective")
+    plt.title("Stochastic")
+    plt.ylim(min(objectiveResult) - 100 , 0)
+    plt.show()  
     return 0
 main()
