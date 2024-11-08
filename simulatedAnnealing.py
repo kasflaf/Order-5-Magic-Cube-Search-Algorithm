@@ -4,8 +4,10 @@ import math as m
 import random as r
 import time as t
 import matplotlib.pyplot as plt
+import numpy as np 
 
 objectiveResult = []
+expResult = []
 
 def simulatedAnnealing(arr) :
 
@@ -28,6 +30,8 @@ def simulatedAnnealing(arr) :
         deltaE = o.objective(next) - o.objective(current)
 
         a = r.random()
+        expValue = np.exp(deltaE / t)
+        expResult.append(expValue)
 
         if deltaE > 0 : 
             current = [i for i in next]
@@ -63,11 +67,11 @@ def main() :
 
     print("\n\nstate awal: ")
     c.printArray(temp)
-    print(f"objective: {o.objective(temp)}")
+    print(f"State Awal: {o.objective(temp)}")
 
     print("\n\nstate akhir: ")
     c.printArray(arr)
-    print(f"objective: {o.objective(arr)}")
+    print(f"State Akhir: {o.objective(arr)}")
 
     end = t.time()
     print("stuck: ",end="")
@@ -82,5 +86,11 @@ def main() :
     plt.title("Simulated Annealing")
     plt.ylim(min(objectiveResult) - 100 , 0)
     plt.show()  
+
+    plt.plot(range(1, len(expResult) + 1), expResult, color='blue')
+    plt.xlabel("Iteration")
+    plt.ylabel("e^(ΔE/T)")
+    plt.title("Simulated Annealing - e^(ΔE/T) Over Iterations")
+    plt.show()
     return 0
 main()
