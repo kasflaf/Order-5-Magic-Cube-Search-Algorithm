@@ -1,6 +1,9 @@
 import obj as o
 import cube as c
 import time as t
+import matplotlib.pyplot as plt
+
+objectiveResult = []
 
 def steepest(arr) :
     current = [i for i in arr]
@@ -18,6 +21,8 @@ def steepest(arr) :
             print(o.objective(current))
             return current
         current = neighbor
+
+        objectiveResult.append(neighborObjective)
         
 
 def main() :
@@ -31,7 +36,13 @@ def main() :
 
     c.printArray(arr)
     elapsed = end-start
-    print("duration: " + str(elapsed))    
+    print("duration: " + str(elapsed))   
+
+    plt.plot(range(1, len(objectiveResult) + 1), objectiveResult, marker='o')
+    plt.xlabel("Iteration")
+    plt.ylabel("Neighbor Objective")
+    plt.title("Steepest Ascent")
+    plt.show() 
 
     return 0
 main()
