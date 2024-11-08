@@ -2,6 +2,10 @@ import obj as o
 import cube as c
 import random
 import time as t
+import matplotlib.pyplot as plt
+
+max_values = []
+avg_values = []
 
 #check duplicate, true if duplicate
 def isDuplicate(arr, num: int) -> bool:
@@ -145,6 +149,8 @@ def genetic(population, arr, iterationCount ):
     print(stateVal)
     print(f"Max: {max(stateVal)}")
     print(f"Avg: {sum(stateVal)/len(stateVal)}\n")
+    max_values.append(max(stateVal) - 2522)
+    avg_values.append(sum(stateVal)/len(stateVal) - 2522)
 
     newStateVal = [0]*population
     for i in range (0, population):
@@ -173,8 +179,8 @@ def genetic(population, arr, iterationCount ):
 
 
 def main():
-    population: int = 10
-    iteration: int = 300000
+    population: int = 5
+    iteration: int = 30000
     itercount = [0]
     start_time = t.time()
 
@@ -184,7 +190,7 @@ def main():
 
     result = genetic(population, result, itercount)
 
-    #iterasi
+    #iterasi    
     for i in range(0, iteration-1):
         result = genetic(population, result, itercount)
 
@@ -198,6 +204,14 @@ def main():
     visualizePopulation(result)
     print(f"Duration: {end_time - start_time}")
 
+    iterations = range(1, iteration + 1)
+    plt.plot(iterations, max_values, label='Max Objective', color='purple')
+    plt.plot(iterations, avg_values, label='Avg Objective', color='orange')
+    plt.xlabel("Iteration")
+    plt.ylabel("Objective Value")
+    plt.title("Genetic Algorithm")
+    plt.ylim(min(avg_values) - 100, 0)
+    plt.show()
 
     return
 

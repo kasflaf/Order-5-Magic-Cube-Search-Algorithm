@@ -17,7 +17,7 @@ def steepest(arr) :
         print(neighborObjective)
         j+=1
         if neighborObjective<=o.objective(current) :
-            print("state akhir:" ,end="")
+            print("state akhir(iterasi " + str(j) +"): " ,end="")
             print(o.objective(current))
             return current
         current = neighbor
