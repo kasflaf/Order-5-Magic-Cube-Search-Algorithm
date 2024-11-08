@@ -56,7 +56,7 @@ def main() :
 
     plt.xlabel("Iteration")
     plt.ylabel("Neighbor Objective")
-    plt.title("Random")
+    plt.title("Random Restart")
     plt.ylim(min(min(all_objective_values)) - 100, 0) 
     plt.show()
     return 0
