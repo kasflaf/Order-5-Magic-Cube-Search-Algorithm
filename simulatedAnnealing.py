@@ -61,11 +61,13 @@ def main() :
 
     arr,stuck = simulatedAnnealing(arr)
 
-    print("state awal: ")
+    print("\n\nstate awal: ")
     c.printArray(temp)
+    print(f"objective: {o.objective(temp)}")
 
-    print("state akhir: ")
+    print("\n\nstate akhir: ")
     c.printArray(arr)
+    print(f"objective: {o.objective(arr)}")
 
     end = t.time()
     print("stuck: ",end="")
