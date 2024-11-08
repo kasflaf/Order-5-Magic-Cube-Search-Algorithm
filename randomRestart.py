@@ -17,11 +17,11 @@ def steepest(arr) :
         print(neighborObjective)
         j+=1
         if neighborObjective<=o.objective(current) :
-            objectiveResult.append(o.objective(neighbor))
             print("state akhir:" ,end="")
             print(o.objective(current))
             return current, objectiveResult
         current = neighbor
+        objectiveResult.append(o.objective(neighbor))
 
 def main() :
     arr = c.getRandomCube()
@@ -30,16 +30,17 @@ def main() :
     start=t.time()
     maxarr = arr
     all_objectiveResult = []
+    objectiveResult = []
 
-    while (o.objective(arr) < 0 and numRestart <= maxRestart):
+    while (o.objective(arr) < 0 and numRestart < maxRestart):
         print("Restart ke-" + str(numRestart+1))
 
         arr = c.getRandomCube()
         c.printArray(arr)
-        arr = steepest(arr)
+        arr,objectiveResult = steepest(arr)
         c.printArray(arr)
         o.diagnostic(arr)
-        if (o.objective(arr) >= o.objective(maxarr)): maxarr = arr
+        if (o.objective(arr) >= o.objective(maxarr)): maxarr = [i for i in arr]
         numRestart += 1
         all_objectiveResult.append(objectiveResult)
 
@@ -57,7 +58,6 @@ def main() :
     plt.xlabel("Iteration")
     plt.ylabel("Neighbor Objective")
     plt.title("Random Restart")
-    plt.ylim(min(min(all_objective_values)) - 100, 0) 
     plt.show()
     return 0
 
