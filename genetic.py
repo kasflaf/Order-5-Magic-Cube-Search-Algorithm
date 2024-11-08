@@ -50,9 +50,9 @@ def genetic(population, arr, iterationCount ):
     for i in range (0, population):
         stateVal[i] = 2522 + stateVal[i]
 
-    #check
-    print("state val: ")
-    print(stateVal)
+    # #check
+    # print("state val: ")
+    # print(stateVal)
 
     #assign fitnessVal
     for i in range (0, population):
@@ -179,15 +179,18 @@ def main():
     start_time = t.time()
 
     #state awal
-    print("state awal: ")
     result = generatePopulation(population)
-    visualizePopulation(result)
+    temp = result
 
     result = genetic(population, result, itercount)
 
     #iterasi
     for i in range(0, iteration-1):
         result = genetic(population, result, itercount)
+
+    #state awal print
+    print("state awal: ")
+    visualizePopulation(temp)
 
     #state akhir
     end_time = t.time()

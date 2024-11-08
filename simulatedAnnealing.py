@@ -57,11 +57,14 @@ def main() :
     
     start=t.time()
     arr = c.getRandomCube()
-
-    c.printArray(arr)
+    temp = arr
 
     arr,stuck = simulatedAnnealing(arr)
 
+    print("state awal: ")
+    c.printArray(temp)
+
+    print("state akhir: ")
     c.printArray(arr)
 
     end = t.time()
