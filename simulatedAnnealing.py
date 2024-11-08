@@ -74,7 +74,7 @@ def main() :
     plt.plot(range(1, len(objectiveResult) + 1), objectiveResult, color='purple')
     plt.xlabel("Iteration")
     plt.ylabel("Neighbor Objective")
-    plt.title("Stochastic")
+    plt.title("Simulated Annealing")
     plt.ylim(min(objectiveResult) - 100 , 0)
     plt.show()  
     return 0
