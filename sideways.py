@@ -19,7 +19,7 @@ def sideways(arr) :
         j+=1
         if neighborObjective<o.objective(current) or countsidestep==50 :
 
-            print("state akhir:" ,end="")
+            print("state akhir (iterasi " + str(j) +"): " ,end="")
             print(o.objective(current))
             return current
 
