@@ -9,8 +9,14 @@ Program ini merupakan implementasi dari local search problem solving agent dalam
 ```bash
   git clone https://github.com/kasflaf/Order-5-Magic-Cube-Search-Algorithm.git
 ```
-- Pilih jenis local search yang ingin dijalankan
 - Buka terminal
+- Masuk ke folder src
+
+```bash
+  cd src
+```
+
+- Pilih jenis local search yang ingin dijalankan
 - Jalankan Program 
 
 ```bash
