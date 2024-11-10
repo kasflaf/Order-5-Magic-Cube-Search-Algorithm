@@ -20,3 +20,11 @@ Contoh
 ```bash
   python -u "simulatedAnnealing.py"
 ```
+
+| Nama | NIM   | Pembagian Tugas   |
+| :---:   | :---: | :---: |
+|Muhammad Rifa Ansyari|18222004|Membuat source code, Membantu membuat plot|
+|Justin Lawrance|18222006|Membuat source code, Mengerjakan dokumen|
+|Axelius Davin|18222016|Membantu source code Sideways Move, Membuat plot, Mengerjakan dokumen|
+|Natanael Steven S|18222054|Membantu source code Simulated Annealing,  Membuat plot, Mengerjakan |
+
