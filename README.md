@@ -1,5 +1,6 @@
 # Order-5-Magic-Cube-Search-Algorithm
 Dibuat untuk memenuhi spesifikasi Tugas Besar IF3070 Dasar Intelegensi Artifisial
+
 Program ini merupakan implementasi dari local search problem solving agent dalam menyelesaikan masalah order-5 magic cube 
 
 ## Cara Menjalankan Program
